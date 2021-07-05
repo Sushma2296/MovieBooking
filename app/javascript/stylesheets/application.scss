@@ -1,0 +1,28 @@
+@import "bootstrap";
+body{
+  text-align:center;
+  background-image: url(/assets/1.jpg);
+  background-size: cover;
+  height: 100%;
+}
+
+.carousel-item img {
+  max-height: 400px;
+  max-width: max-content;
+  margin: auto;
+}
+.card{
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgb(230, 230, 230, 0.5) !important;
+}
+.card-bookshows{
+margin-left: 35%;      
+margin-right: 35%;
+width: 40%;
+}
+.card-admin{
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgb(230, 230, 230, 0.5) !important;
+}

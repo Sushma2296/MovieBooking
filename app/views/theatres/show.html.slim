@@ -1,0 +1,14 @@
+h3 Theatre Details
+div class="card mb-3" style="max-width: 100%; position:center"
+  div class="row g-0"
+    div class="col-md-3"
+      -if @theatre.image.attached?
+        = image_tag @theatre.image, class:"card-img-top", style:"height:300px;width:auto;"
+      -else
+        = 0
+    div class="col-md-8"
+      div class="card-body"
+        h3 = "Name: #{@theatre.name}"
+        h6 = "City: #{@theatre.city.name}"
+        h6 = "Pincode: #{@theatre.pincode}"
+        =link_to "See all shows", theatre_shows_path(@theatre), class:"btn btn-danger btn-btn-lg"

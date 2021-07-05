@@ -1,0 +1,17 @@
+h3 Show Details
+div class="card mb-3" style="max-width: 100%; position:center"
+  div class="row g-0"
+    div class="col-md-3"
+      -if @show.movie.image.attached?
+        = image_tag @show.movie.image, class:"card-img-top", style:"height:300px;width:auto;"
+      -else
+        = 0
+    div class="col-md-8"
+      div class="card-body"
+        h3 = @show.movie.name
+        h6 = "Screen: #{@show.screen.name}"
+        h6 = "Date: #{@show.date}"
+        h6 = "Time: #{@show.time}"
+        h6 = "Runtime: #{@show.movie.runtime}hr."      
+        h6 = "Amount: #{@show.amount} Rs." 
+        =link_to "Book Now",theatre_show_bookings_path(@theatre,@show), class:"btn btn-danger"

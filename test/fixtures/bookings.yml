@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  show: one
+  user: one
+  isconfirm: false
+  seat_number: MyString
+
+two:
+  show: two
+  user: two
+  isconfirm: false
+  seat_number: MyString

@@ -1,0 +1,39 @@
+-if @theatre.nil?
+ h3 = "No theatre Found"
+-else
+  div class="container"
+    div class="card-list item-align-center" style="width:70rem;"
+      div class="card-body-list" style="width:70rem; position: center;"  
+          div class="row"
+            -@theatre.each do | var |
+              div class="col-10 item-align-center" style=" margin-top: 10px;"
+                div class="card"
+                  -if  var.image.attached?
+                    = image_tag  var.image, style:"width:926px;height:450px"
+                  -else
+                    = ??
+                div class="card-body-new " style="width:10rem; text-align: center; "
+                h3= var.name
+                h4= var.pincode
+                h5= var.city.name
+                =link_to "See Available Shows", theatre_shows_path(var.id),  class: "btn btn-primary"
+-if @movies.nil?
+  h3 = "No Movie Found"     
+-else   
+    div class="container"
+      div class="card-list item-align-center" style="width:70rem;"
+        div class="card-body-list" style="width:70rem; position: center;"  
+            div class="row"
+              -@movies.each do | var |
+                div class="col-12 item-align-center" style=" margin-top: 10px;"
+                  div class="card-5"
+                    -if  var.image.attached?
+                      = image_tag  var.image, style:"width:926px;height:450px"
+                    -else
+                      = ??
+                  div class="card-body-new " style="width:10rem; text-align: center; "
+                  h3= "Movie name : #{var.name}"
+                  h4= "Release Date: #{var.release_date}"
+                  h5= "category: #{var.category}"  
+                  h5= "Runtime: #{var.runtime} " 
+                  =link_to "Book now", "#" ,class: "btn btn-danger"

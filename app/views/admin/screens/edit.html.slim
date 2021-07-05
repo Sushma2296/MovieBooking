@@ -1,0 +1,11 @@
+div
+  h3 Edit Screen
+  =form_for @screen ,url:admin_screen_path(@screen.id) do |f|
+    br
+    = f.label :name
+    = f.text_field :name
+    br
+    = f.label :seats
+    = f.text_field :seats
+    br
+    = f.button :Update

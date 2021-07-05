@@ -1,0 +1,14 @@
+div class="col-3"
+  table.table
+    thead
+      tr
+        th= link_to @theatre.name ,"#",class:"btn btn-primary btn-lg"
+      tbody
+        tr
+          td= link_to "Screen",admin_screens_path,class:"btn btn-info btn-md"
+        tr
+          td= link_to "Shows",admin_shows_path,class:"btn btn-info btn-md"
+        tr
+          td= link_to "Booking",admin_bookings_path,class:"btn btn-info btn-md"
+        tr
+          td= link_to "Payment","#",class:"btn btn-info btn-md"

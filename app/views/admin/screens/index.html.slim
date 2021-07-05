@@ -1,0 +1,35 @@
+div class="row"
+  = render 'admin/sidebar'
+  div class="col-8"
+    h3 Screens
+    table.table 
+      thead
+        tr
+          th scope="col" Name of screen
+          th scope="col" No. of Seats
+          th scope="col" Edit 
+          th scope="col" Delete
+      tbody 
+        - @screens.each do |s|
+          tr
+            td= s.name 
+            td= s.seats
+            td= link_to "",edit_admin_screen_path(s.id),method:"GET",class:"fas fa-edit"
+            td= link_to "",admin_screen_path(s.id),method:"DELETE",class:"fas fa-trash-alt"
+
+h3 Add Screen
+div class ="card-bookshows" 
+  div class="card mb-3" style="max-width: 80%; position: center" 
+    div class="card-body"
+      div
+        = form_for @screen, url:admin_screens_path(@theatre) do |f|
+            = f.hidden_field :theatre_id, value:@theatre.id
+            = f.label :name 
+            = f.text_field :name
+            br
+            br
+            = f.label :seats 
+            = f.text_field :seats
+            br
+            br
+            = f.button :submit, :class => "btn btn-danger"

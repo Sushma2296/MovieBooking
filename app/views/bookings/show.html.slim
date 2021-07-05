@@ -1,0 +1,19 @@
+h3 Booking Details
+div class="card mb-3 " style="max-width: 100%; position:center"
+  div class="row g-0"
+    div class="col-md-12"
+      div class="card-body item-align:center" 
+        h4 = "Movie Name: #{@booking.show.movie.name}"
+        h5 = "Seat numbers: #{@booking.seat_number}"
+        h5 = "Amount: #{@booking.amount}"
+        =link_to "Payment now", theatres_path ,class: "btn btn-danger",
+          :onclick => 'alert( " payment Successfully!Thank You for Booking! visit Again ")'
+                
+
+ 
+   
+      
+       
+ 
+    
+            

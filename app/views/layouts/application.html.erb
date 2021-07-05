@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MovieBooking</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
+    <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  </head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+<div class="container-fluid">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" href="#">BYM</a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  </div>
+  &nbsp
+      <form action="<%= search_path %>" method="POST" class="d-flex">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input class="form-control me-2" type="text" name="search" placeholder="Search Theatre/movies">
+        <button class="btn btn-outline-dark" type="submit">Search</button>
+      </form>
+    </ul>
+    
+    &nbsp;
+    <% if user_signed_in? %>
+      <strong><%= current_user.email %></strong>.
+      <%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link", class: "btn btn-danger" %> 
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-link", class: "btn btn-danger" %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path, :class => "navbar-link", class: "btn btn-danger" %> 
+      &nbsp;
+      <%= link_to "Login", new_user_session_path, :class => "navbar-link", class: "btn btn-danger" %>
+    <% end %>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %> 
+  </div>
+</div>
+</nav>
+<div class="conatiner">
+<div class="card-admin">
+<%= yield %>
+</div>
+</div>
+</body>
+</html>

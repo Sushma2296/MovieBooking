@@ -1,0 +1,24 @@
+div class="row"
+  = render 'admin/sidebar'
+  div class="col-8"
+    h3 No of booking
+    table.table 
+      thead
+        tr
+          th scope="col" Show Name
+          th scope="col" User Name
+          th scope="col" Booking Status
+          th scope="col" Amount 
+      tbody 
+        -@screens.each do |p|
+          -p.shows.each do |s|
+           -s.bookings.each do |m|
+              tr
+                td= m.show.movie.name 
+                td= m.user.name
+                td 
+                  - if m.isconfirm = true 
+                      = "Successful"
+                td= m.show.amount 
+           
+                
