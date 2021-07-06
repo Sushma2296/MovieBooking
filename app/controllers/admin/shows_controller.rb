@@ -1,8 +1,13 @@
 class Admin::ShowsController < ApplicationController
-  def index
+  before_action :show_details
+
+  def show_details
     @ta = TheatreAdmin.where(user: current_user).first
     @theatre = @ta.theatre
     @screens = @theatre.screens
+  end
+
+  def index
     @show = Show.new
   end
 
@@ -10,6 +15,9 @@ class Admin::ShowsController < ApplicationController
     @show = Show.create(show_params)
     if @show.save
       redirect_to admin_shows_path
+    else
+      flash.now[:messages] = @show.errors.full_messages[0]
+      render :index
     end
   end
 

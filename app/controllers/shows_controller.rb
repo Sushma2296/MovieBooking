@@ -1,11 +1,15 @@
 class ShowsController < ApplicationController
-  def index
+  before_action :theatre_details
+
+  def theatre_details
     @theatre = Theatre.find(params[:theatre_id])
+  end
+
+  def index
     @screens = @theatre.screens
   end
 
   def show
-    @theatre = Theatre.find(params[:theatre_id])
     @show = Show.find(params[:id])
   end
 end

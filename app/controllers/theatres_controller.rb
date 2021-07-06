@@ -1,11 +1,6 @@
 class TheatresController < ApplicationController
   def index
     @theatres = Theatre.all
-    @cities = City.all
-  end
-
-  def new
-    @cities = City.all
   end
 
   def show
@@ -16,5 +11,4 @@ class TheatresController < ApplicationController
     @theatre = Theatre.search(params[:search])
     @movies = Movie.search(params[:search])
   end
-
 end

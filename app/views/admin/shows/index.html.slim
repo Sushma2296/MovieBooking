@@ -30,6 +30,9 @@ div class ="card-bookshows"
   div class="card mb-3" style="max-width: 80%; position: center" 
     div class="card-body"
       div
+        -if flash[:messages]
+            =flash[:messages] 
+        end 
         = form_for @show, url:admin_shows_path(@screen) do |f|
           = f.label :screen_id
           = f.text_field :screen_id
@@ -51,3 +54,5 @@ div class ="card-bookshows"
           = f.text_field :amount
           br
           = f.button :submit, :class => "btn btn-danger"
+          
+          

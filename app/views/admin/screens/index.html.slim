@@ -16,13 +16,15 @@ div class="row"
             td= s.seats
             td= link_to "",edit_admin_screen_path(s.id),method:"GET",class:"fas fa-edit"
             td= link_to "",admin_screen_path(s.id),method:"DELETE",class:"fas fa-trash-alt"
-
 h3 Add Screen
 div class ="card-bookshows" 
   div class="card mb-3" style="max-width: 80%; position: center" 
     div class="card-body"
       div
         = form_for @screen, url:admin_screens_path(@theatre) do |f|
+            -if flash[:messages]
+              =flash[:messages] 
+            end 
             = f.hidden_field :theatre_id, value:@theatre.id
             = f.label :name 
             = f.text_field :name
@@ -33,3 +35,4 @@ div class ="card-bookshows"
             br
             br
             = f.button :submit, :class => "btn btn-danger"
+          

@@ -9,9 +9,7 @@ Rails.application.routes.draw do
 
   resources :theatres, only: [:index, :show] do
     resources :shows, only: [:index, :show] do
-      resources :bookings do
-        resources :payments
-      end
+      resources :bookings
     end
   end
   post "search", to: "theatres#search", as: "search"

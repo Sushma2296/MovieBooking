@@ -1,31 +1,29 @@
 class Admin::ScreensController < ApplicationController
-  def index
-    @ta = TheatreAdmin.where(user: current_user).first
-    if @ta.nil?
-      redirect_to theatres_path
-    else
-      @theatre = @ta.theatre
-      @screens = @theatre.screens
-      @screen = Screen.new
-    end
-    @cities = City.all
-  end
+  before_action :screen_details
 
-  def show
+  def screen_details
     @ta = TheatreAdmin.where(user: current_user).first
     @theatre = @ta.theatre
     @screens = @theatre.screens
   end
 
+  def index
+    if @ta.nil?
+      redirect_to theatres_path
+    else
+      @screen = Screen.new
+    end
+  end
+
+  def show
+    @screens = @theatre.screens
+  end
+
   def edit
-    @ta = TheatreAdmin.where(user: current_user).first
-    @th = @ta.theatre
     @screen = @th.screens.find(params[:id])
   end
 
   def update
-    @ta = TheatreAdmin.where(user: current_user).first
-    @th = @ta.theatre
     @screen = @th.screens.find(params[:id])
     if @screen.update(screen_params)
       redirect_to admin_screens_path
@@ -36,12 +34,13 @@ class Admin::ScreensController < ApplicationController
     @screen = Screen.create(screen_params)
     if @screen.save
       redirect_to admin_screens_path
+    else
+      flash.now[:messages] = @screen.errors.full_messages[0]
+      render :index
     end
   end
 
   def destroy
-    @ta = TheatreAdmin.where(user: current_user).first
-    @theatre = @ta.theatre
     @screen = @theatre.screens.find(params[:id])
     if @screen.destroy
       redirect_to admin_screens_path
